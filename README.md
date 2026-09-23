@@ -23,10 +23,10 @@ claude mcp get fmcg
 
 ##### using pre-existing mcp server
 
-# Terminal 1 — CoreBank's actual API
+#### Terminal 1 — CoreBank's actual API
 cd corebank && npm install && npm run dev
 
-# Terminal 2 — build the MCP wrapper once
+#### Terminal 2 — build the MCP wrapper once
 cd corebank-mcp && npm install && npx tsc
 
 
@@ -36,7 +36,7 @@ claude mcp add corebank --env COREBANK_URL=http://localhost:3001 -- node /full/p
 
 #### to test
 
-# Terminal 2, still — create test accounts and get real IDs
+#### Terminal 2, still — create test accounts and get real IDs
 cd ../corebank
 A=$(curl -s -X POST http://localhost:3001/accounts -H "Content-Type: application/json" -d '{"ownerId":"alice","type":"standard"}')
 A_ID=$(echo "$A" | python3 -c "import json,sys;print(json.load(sys.stdin)['id'])")
