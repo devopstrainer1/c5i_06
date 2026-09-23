@@ -40,3 +40,8 @@ server.registerTool(
 );
 void serveStdio(() => server);
 console.error("FMCG MCP server running");
+
+
+########## command to connect
+
+npx @modelcontextprotocol/inspector npx tsx src/index.ts
