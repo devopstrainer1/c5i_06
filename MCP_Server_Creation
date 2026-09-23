@@ -1,0 +1,42 @@
+Step 1 — Create project
+mkdir fmcg-mcp
+cd fmcg-mcp
+npm init -y
+npm pkg set type=module
+npm install @modelcontextprotocol/server zod tsx
+mkdir src
+The current TypeScript SDK v2 quickstart uses Node.js 20+, ESM, @modelcontextprotocol/server, zod and tsx.
+
+###########################
+Step 2 — src/index.ts
+import { McpServer } from "@modelcontextprotocol/server";
+import { serveStdio } from "@modelcontextprotocol/server/stdio";
+import * as z from "zod/v4";
+const server = new McpServer({
+ name: "fmcg-demo",
+ version: "1.0.0",
+});
+server.registerTool(
+ "get_product_sales",
+ {
+ title: "Get Product Sales",
+ description: "Return synthetic sales for a product and region.",
+ inputSchema: {
+ product: z.string().min(1),
+ region: z.string().min(1),
+ },
+ },
+ async ({ product, region }) => ({
+ content: [{
+ type: "text",
+ text: JSON.stringify({
+ product,
+ region,
+ unitsSold: 12500,
+ revenue: 875000
+ })
+ }]
+ })
+);
+void serveStdio(() => server);
+console.error("FMCG MCP server running");
