@@ -1,4 +1,4 @@
-#### creating mcp server from scratch
+# creating mcp server from scratch
 
 after installing test
 
@@ -21,7 +21,7 @@ claude mcp get fmcg
 
 .......................
 
-##### using pre-existing mcp server
+# using pre-existing mcp server
 
 #### Terminal 1 — CoreBank's actual API
 cd corebank && npm install && npm run dev
